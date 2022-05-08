@@ -1,12 +1,11 @@
 public class Solution {
     public int MissingNumber(int[] nums) {
-        for(int i = 0; i <= nums.Length; i++)
+        int xor = 0;
+        int i = 0;
+        for(i = 0; i < nums.Length; i++)
         {
-            if(!nums.Contains(i))
-            {
-                return i;
-            }
+            xor = xor ^ i ^ nums[i];
         }
-        return 0;
+        return xor ^ i;
     }
 }
