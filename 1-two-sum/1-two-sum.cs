@@ -1,17 +1,20 @@
 public class Solution {
     public int[] TwoSum(int[] nums, int target) {
-        var i = 0;
-        var j = 0;
+        var dataDict = new Dictionary<int, int>();
         var result = new int[2];
-        for(i = 0; i < nums.Length; i++)
+        for(int i = 0; i < nums.Length; i++)
         {
-            for(j = i + 1; j < nums.Length; j++)
+            if(dataDict.ContainsKey(nums[i]))
             {
-                if(nums[i] + nums[j] == target)
+                result[0] = dataDict[nums[i]];
+                result[1] = i;
+                break;
+            }
+            else   
+            {
+                if(!dataDict.ContainsKey(target - nums[i]))
                 {
-                    result[0] = i;
-                    result[1] = j;
-                    break;
+                    dataDict.Add(target - nums[i], i);                    
                 }
             }
         }
